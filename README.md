@@ -1,15 +1,14 @@
 # AI Stocks Market
 
-A personal AI-powered stock market simulator for tracking a portfolio of artificial intelligence and technology leaders.
+A personal AI market simulation with portfolio tracking, trading, signals, and leaderboard competition.
 
 ## Features
 
-- AI-focused portfolio dashboard with cash, holdings, and total value
-- Buy and sell mock trades across leading AI and tech names
-- Live watchlist of AI market movers
-- Top gainers and laggards leaderboard
-- Portfolio performance tracking and trade history
-- Simulated market updates for a fast, realistic feel
+- AI-focused watchlist and real-time market simulation
+- Buy/sell orders with mock cash and holdings
+- Market sentiment and sector indicators
+- Top movers, leaderboard, and AI news feed
+- Performance tracking across a simulated portfolio
 
 ## Run locally
 
@@ -27,4 +26,4 @@ http://localhost:3000
 
 ## Notes
 
-This app is a simulated trading game for learning and experimentation. It does not provide real financial advice or real market data.
+This is a simulated market experience for learning and demo purposes only.
