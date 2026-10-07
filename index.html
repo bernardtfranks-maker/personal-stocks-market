@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Stocks Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Personal portfolio</p>
+          <h1>Stocks Market</h1>
+        </div>
+        <div class="topbar-actions">
+          <button id="market-toggle" class="primary-btn">Start market</button>
+          <button id="reset-btn" class="ghost-btn">Reset</button>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="stats-grid" aria-label="Portfolio summary">
+          <article class="stat-card">
+            <span class="label">Portfolio value</span>
+            <strong id="portfolio-value">$0.00</strong>
+            <small id="portfolio-change">+$0.00 today</small>
+          </article>
+          <article class="stat-card">
+            <span class="label">Cash</span>
+            <strong id="cash-value">$0.00</strong>
+            <small>Available to invest</small>
+          </article>
+          <article class="stat-card">
+            <span class="label">Invested</span>
+            <strong id="invested-value">$0.00</strong>
+            <small id="positions-count">0 positions</small>
+          </article>
+          <article class="stat-card">
+            <span class="label">Buying power</span>
+            <strong id="buying-power">$0.00</strong>
+            <small>Based on available cash</small>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel main-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Market overview</p>
+                <h2 id="chart-title">AAPL</h2>
+              </div>
+              <div class="price-pill" id="chart-price">$0.00</div>
+            </div>
+
+            <div class="chart-wrap">
+              <svg id="price-chart" viewBox="0 0 560 250" preserveAspectRatio="none" role="img" aria-label="Price chart"></svg>
+            </div>
+          </div>
+
+          <aside class="panel side-panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="eyebrow">Watchlist</p>
+                <h2>Trending</h2>
+              </div>
+            </div>
+            <ul id="watchlist" class="watchlist"></ul>
+          </aside>
+        </section>
+
+        <section class="lower-grid">
+          <div class="panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="eyebrow">Portfolio</p>
+                <h2>Holdings</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Value</th>
+                    <th>P/L</th>
+                  </tr>
+                </thead>
+                <tbody id="holdings-table"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="eyebrow">Trade</p>
+                <h2>Order ticket</h2>
+              </div>
+            </div>
+
+            <form id="order-form" class="order-form">
+              <div class="field-row">
+                <label>
+                  Symbol
+                  <select id="symbol-select" aria-label="Stock symbol"></select>
+                </label>
+              </div>
+
+              <div class="field-row split">
+                <label>
+                  Side
+                  <select id="side-select">
+                    <option value="buy">Buy</option>
+                    <option value="sell">Sell</option>
+                  </select>
+                </label>
+                <label>
+                  Shares
+                  <input id="shares-input" type="number" min="1" value="10" />
+                </label>
+              </div>
+
+              <div class="order-estimate">
+                <div>
+                  <span>Estimated</span>
+                  <strong id="order-total">$0.00</strong>
+                </div>
+                <div>
+                  <span>Available</span>
+                  <strong id="estimated-available">$0.00</strong>
+                </div>
+              </div>
+
+              <button type="submit" class="primary-btn full-width">Submit order</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="bottom-grid">
+          <div class="panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="eyebrow">Leaders</p>
+                <h2>Top movers</h2>
+              </div>
+            </div>
+            <ul id="movers-list" class="movers-list"></ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="eyebrow">History</p>
+                <h2>Activity</h2>
+              </div>
+            </div>
+            <ul id="activity-log" class="activity-log"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
