@@ -5,27 +5,32 @@ const currency = new Intl.NumberFormat('en-US', {
 });
 
 const initialStocks = [
-  { symbol: 'AAPL', name: 'Apple', price: 214.36, change: 1.42, history: [198, 201, 205, 207, 210, 212, 214.36] },
-  { symbol: 'MSFT', name: 'Microsoft', price: 428.85, change: 0.93, history: [405, 411, 414, 417, 421, 425, 428.85] },
   { symbol: 'NVDA', name: 'NVIDIA', price: 136.22, change: 2.18, history: [112, 118, 120, 124, 128, 131, 136.22] },
-  { symbol: 'AMZN', name: 'Amazon', price: 187.55, change: 1.08, history: [175, 178, 181, 183, 185, 186, 187.55] },
+  { symbol: 'MSFT', name: 'Microsoft', price: 428.85, change: 0.93, history: [405, 411, 414, 417, 421, 425, 428.85] },
+  { symbol: 'AMD', name: 'Advanced Micro Devices', price: 171.48, change: 1.76, history: [155, 158, 163, 166, 168, 170, 171.48] },
+  { symbol: 'PLTR', name: 'Palantir', price: 31.94, change: 2.52, history: [27.2, 28.1, 28.8, 29.5, 30.3, 31.1, 31.94] },
+  { symbol: 'META', name: 'Meta Platforms', price: 528.76, change: 1.14, history: [500, 504, 510, 515, 520, 524, 528.76] },
   { symbol: 'GOOGL', name: 'Alphabet', price: 176.41, change: -0.34, history: [182, 181, 180, 179, 178, 177, 176.41] },
-  { symbol: 'TSLA', name: 'Tesla', price: 251.64, change: -1.42, history: [267, 263, 260, 258, 255, 253, 251.64] }
+  { symbol: 'CRM', name: 'Salesforce', price: 282.50, change: 0.81, history: [270, 272, 275, 279, 280, 281, 282.5] },
+  { symbol: 'IBM', name: 'IBM', price: 182.40, change: 0.66, history: [175, 176, 178, 179, 180, 181, 182.4] },
+  { symbol: 'AAPL', name: 'Apple', price: 214.36, change: 1.42, history: [198, 201, 205, 207, 210, 212, 214.36] },
+  { symbol: 'AMZN', name: 'Amazon', price: 187.55, change: 1.08, history: [175, 178, 181, 183, 185, 186, 187.55] }
 ];
 
 const state = {
-  cash: 18000,
+  cash: 22000,
   holdings: [
-    { symbol: 'AAPL', shares: 26, avgCost: 195.2 },
-    { symbol: 'MSFT', shares: 14, avgCost: 398.5 },
-    { symbol: 'NVDA', shares: 18, avgCost: 123.4 }
+    { symbol: 'NVDA', shares: 24, avgCost: 128.2 },
+    { symbol: 'MSFT', shares: 18, avgCost: 401.1 },
+    { symbol: 'AMD', shares: 22, avgCost: 152.9 },
+    { symbol: 'PLTR', shares: 40, avgCost: 28.7 }
   ],
   marketRunning: false,
-  selectedSymbol: 'AAPL',
+  selectedSymbol: 'NVDA',
   activity: [
-    { action: 'Bought 26 AAPL', type: 'buy', time: new Date().toISOString() },
-    { action: 'Bought 14 MSFT', type: 'buy', time: new Date(Date.now() - 3600000).toISOString() },
-    { action: 'Sold 8 NVDA', type: 'sell', time: new Date(Date.now() - 7200000).toISOString() }
+    { action: 'Bought 24 NVDA', type: 'buy', time: new Date().toISOString() },
+    { action: 'Bought 18 MSFT', type: 'buy', time: new Date(Date.now() - 3600000).toISOString() },
+    { action: 'Bought 22 AMD', type: 'buy', time: new Date(Date.now() - 7200000).toISOString() }
   ],
   stocks: structuredClone(initialStocks)
 };
@@ -73,9 +78,9 @@ function calculatePortfolioBalance() {
   }, 0);
 
   const total = state.cash + invested;
-  const priorValue = state.holdings.reduce((total, holding) => {
+  const priorValue = state.holdings.reduce((totalValue, holding) => {
     const stock = getStockBySymbol(holding.symbol);
-    return total + (stock ? (stock.price - stock.change * 0.7) * holding.shares : 0);
+    return totalValue + (stock ? (stock.price - stock.change * 0.7) * holding.shares : 0);
   }, state.cash);
 
   return { invested, total, change: total - priorValue };
@@ -140,7 +145,7 @@ function renderHoldings() {
   if (!state.holdings.length) {
     elements.holdingsTable.innerHTML = `
       <tr>
-        <td colspan="5" class="subtle">No positions yet. Buy your first stock.</td>
+        <td colspan="5" class="subtle">No positions yet. Buy your first AI stock.</td>
       </tr>
     `;
     return;
@@ -301,8 +306,8 @@ function handleTrade(event) {
 
 function tickMarket() {
   state.stocks = state.stocks.map((stock) => {
-    const drift = (Math.random() - 0.48) * 2.4;
-    const nextPrice = Math.max(20, stock.price * (1 + drift / 100));
+    const drift = (Math.random() - 0.48) * 2.6;
+    const nextPrice = Math.max(15, stock.price * (1 + drift / 100));
     const nextChange = Number(((nextPrice - stock.history[0]) / stock.history[0] * 100).toFixed(2));
     const history = [...stock.history, Number(nextPrice.toFixed(2))].slice(-14);
 
@@ -329,20 +334,21 @@ function renderAll() {
 }
 
 function resetPortfolio() {
-  state.cash = 18000;
+  state.cash = 22000;
   state.holdings = [
-    { symbol: 'AAPL', shares: 26, avgCost: 195.2 },
-    { symbol: 'MSFT', shares: 14, avgCost: 398.5 },
-    { symbol: 'NVDA', shares: 18, avgCost: 123.4 }
+    { symbol: 'NVDA', shares: 24, avgCost: 128.2 },
+    { symbol: 'MSFT', shares: 18, avgCost: 401.1 },
+    { symbol: 'AMD', shares: 22, avgCost: 152.9 },
+    { symbol: 'PLTR', shares: 40, avgCost: 28.7 }
   ];
   state.activity = [
-    { action: 'Bought 26 AAPL', type: 'buy', time: new Date().toISOString() },
-    { action: 'Bought 14 MSFT', type: 'buy', time: new Date(Date.now() - 3600000).toISOString() },
-    { action: 'Sold 8 NVDA', type: 'sell', time: new Date(Date.now() - 7200000).toISOString() }
+    { action: 'Bought 24 NVDA', type: 'buy', time: new Date().toISOString() },
+    { action: 'Bought 18 MSFT', type: 'buy', time: new Date(Date.now() - 3600000).toISOString() },
+    { action: 'Bought 22 AMD', type: 'buy', time: new Date(Date.now() - 7200000).toISOString() }
   ];
   state.stocks = structuredClone(initialStocks);
-  state.selectedSymbol = 'AAPL';
-  elements.symbolSelect.value = 'AAPL';
+  state.selectedSymbol = 'NVDA';
+  elements.symbolSelect.value = 'NVDA';
   renderAll();
 }
 
