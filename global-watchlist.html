@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Global AI Stocks Watchlist</title>
+<style>
+:root{color-scheme:dark;--bg:#07111f;--panel:#101d30;--line:#233650;--text:#edf4ff;--muted:#9db0ca;--blue:#60a5fa;--green:#34d399;--red:#f87171}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top left,#122b50,var(--bg) 48%);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1180px;margin:auto;padding:28px 18px 60px}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}.eyebrow{color:var(--blue);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 5px}h1{margin:0;font-size:clamp(27px,4vw,42px);letter-spacing:-.04em}h2{font-size:17px;margin:0}.muted{color:var(--muted)}.pill{border:1px solid #31517a;background:#132846;color:#bfdbfe;border-radius:999px;padding:7px 11px;font-size:12px}
+.notice{margin:22px 0;padding:13px 15px;border:1px solid #6b5526;background:#2a2417;border-radius:12px;color:#f8df9a}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.card,.panel{background:#101d30eF;border:1px solid var(--line);border-radius:15px;padding:16px}.metric{font-size:26px;font-weight:750}.controls{display:grid;grid-template-columns:minmax(180px,1fr) minmax(190px,.7fr) auto;gap:10px;margin:18px 0}input,select,button{font:inherit;color:var(--text);background:#0a1627;border:1px solid #30445f;border-radius:10px;padding:11px 12px;min-width:0}button{cursor:pointer;background:#17355b;border-color:#315b8a}button:hover{filter:brightness(1.15)}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:780px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid #22334a}th{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}td small{display:block;color:var(--muted)}.star{font-size:19px;padding:3px 8px;background:transparent;border:0}.star.saved{color:#facc15}.symbol{font-weight:750}.tag{display:inline-block;font-size:11px;color:#bfdbfe;background:#172c48;border-radius:6px;padding:3px 6px}.empty{text-align:center;padding:25px;color:var(--muted)}footer{margin-top:15px;color:var(--muted);font-size:12px}.hidden{display:none}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.top{align-items:flex-start}}
+</style>
+</head>
+<body><main>
+<header class="top"><div><p class="eyebrow">Global market intelligence · Version 1</p><h1>Global AI Stocks Watchlist</h1><p class="muted">AI-related public companies only · worldwide coverage as data permits</p></div><span class="pill">FREE-FIRST BUILD</span></header>
+<div class="notice"><strong>Data status:</strong> Starter universe only. No live quotes are connected in this version. Prices are intentionally not fabricated. Connect and verify a provider before displaying market prices.</div>
+<section class="grid" aria-label="Watchlist summary">
+<div class="card"><p class="muted">AI-related symbols</p><div id="total" class="metric">—</div><small class="muted">In the starter universe</small></div>
+<div class="card"><p class="muted">Markets / regions</p><div id="regions" class="metric">—</div><small class="muted">Listed market locations represented</small></div>
+<div class="card"><p class="muted">Saved favorites</p><div id="favorites" class="metric">0</div><small class="muted">Stored in this browser</small></div>
+</section>
+<section class="panel">
+<div class="controls"><input id="search" type="search" placeholder="Search company, ticker, country…" aria-label="Search stocks"><select id="category" aria-label="Filter by AI category"><option value="all">All AI categories</option></select><select id="view" aria-label="Choose watchlist view"><option value="all">All AI stocks</option><option value="favorites">Favorites only</option></select></div>
+<div class="tablewrap"><table><thead><tr><th>Favorite</th><th>Company / ticker</th><th>Market</th><th>AI category</th><th>Price</th><th>Data status</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="empty">Loading starter universe…</td></tr></tbody></table></div>
+<footer id="count"></footer>
+</section>
+<footer>Educational research tool, not investment advice. Listings and AI exposure must be verified. International ticker formats vary by provider. Favorite settings are saved only in this browser. No trading is performed.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const favoritesKey='global-ai-watchlist-favorites-v1';
+let categories=[],stocks=[],favorites=new Set();
+try{favorites=new Set(JSON.parse(localStorage.getItem(favoritesKey)||'[]'))}catch{}
+function save(){try{localStorage.setItem(favoritesKey,JSON.stringify([...favorites]))}catch{}}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){
+ const q=$('search').value.trim().toLowerCase(),cat=$('category').value,view=$('view').value;
+ const all=categories.flatMap(c=>c.tickers.map(s=>({...s,category:c.label,categoryId:c.id})));
+ const filtered=all.filter(s=>(cat==='all'||s.categoryId===cat)&&(view!=='favorites'||favorites.has(s.symbol))&&(!q||[s.symbol,s.company,s.country,s.exchange,s.category].join(' ').toLowerCase().includes(q)));
+ $('total').textContent=all.length;$('regions').textContent=new Set(all.map(s=>s.country)).size;$('favorites').textContent=favorites.size;
+ $('rows').innerHTML=filtered.length?filtered.map(s=>'<tr><td><button class="star '+(favorites.has(s.symbol)?'saved':'')+'" data-fav="'+esc(s.symbol)+'" aria-label="'+(favorites.has(s.symbol)?'Remove':'Add')+' '+esc(s.symbol)+' '+(favorites.has(s.symbol)?'from':'to')+' favorites">'+(favorites.has(s.symbol)?'★':'☆')+'</button></td><td><span class="symbol">'+esc(s.company)+'</span><small>'+esc(s.symbol)+'</small></td><td>'+esc(s.exchange)+'<small>'+esc(s.country)+'</small></td><td><span class="tag">'+esc(s.category)+'</span></td><td>—<small>Not connected</small></td><td><span class="muted">No quote feed</span></td></tr>').join(''):'<tr><td colspan="6" class="empty">No matching stocks. Try another search or category.</td></tr>';
+ $('count').textContent='Showing '+filtered.length+' of '+all.length+' starter symbols. Quote timestamps and delay status will appear when a provider is connected.';
+}
+$('rows').addEventListener('click',e=>{const b=e.target.closest('[data-fav]');if(!b)return;const sym=b.dataset.fav;if(favorites.has(sym))favorites.delete(sym);else favorites.add(sym);save();render()});
+['search','category','view'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render));
+fetch('data/global-ai-watchlist-v1.json').then(r=>{if(!r.ok)throw new Error('Could not load watchlist data');return r.json()}).then(data=>{categories=data.categories||[];$('category').innerHTML='<option value="all">All AI categories</option>'+categories.map(c=>'<option value="'+esc(c.id)+'">'+esc(c.label)+'</option>').join('');render()}).catch(()=>{$('rows').innerHTML='<tr><td colspan="6" class="empty">Could not load data/global-ai-watchlist-v1.json. Run from the project root using a local web server.</td></tr>';});
+</script></body></html>
