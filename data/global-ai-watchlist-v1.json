@@ -11,75 +11,555 @@
     "missing_data_behavior": "show unavailable; never invent or silently reuse stale prices",
     "api_keys": "keep provider keys out of client-side code and public repositories"
   },
-  "status": "starter universe; verify symbols and exchange coverage before live quote integration",
+  "status": "Expanded starter universe from user-supplied AI stock map; symbols, listing formats, AI exposure, and provider support still require validation before quote integration.",
   "categories": [
     {
       "id": "ai_semiconductors",
       "label": "AI semiconductors and equipment",
       "tickers": [
-        {"symbol": "NVDA", "exchange": "NASDAQ", "country": "US", "company": "NVIDIA"},
-        {"symbol": "AMD", "exchange": "NASDAQ", "country": "US", "company": "Advanced Micro Devices"},
-        {"symbol": "AVGO", "exchange": "NASDAQ", "country": "US", "company": "Broadcom"},
-        {"symbol": "TSM", "exchange": "NYSE", "country": "Taiwan/US ADR", "company": "Taiwan Semiconductor Manufacturing"},
-        {"symbol": "ASML", "exchange": "NASDAQ", "country": "Netherlands/US listing", "company": "ASML"},
-        {"symbol": "MU", "exchange": "NASDAQ", "country": "US", "company": "Micron Technology"},
-        {"symbol": "005930.KS", "exchange": "KRX", "country": "South Korea", "company": "Samsung Electronics"},
-        {"symbol": "000660.KS", "exchange": "KRX", "country": "South Korea", "company": "SK hynix"},
-        {"symbol": "8035.T", "exchange": "Tokyo", "country": "Japan", "company": "Tokyo Electron"}
+        {
+          "symbol": "NVDA",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "NVIDIA"
+        },
+        {
+          "symbol": "AMD",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Advanced Micro Devices"
+        },
+        {
+          "symbol": "AVGO",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Broadcom"
+        },
+        {
+          "symbol": "TSM",
+          "exchange": "NYSE",
+          "country": "Taiwan/US ADR",
+          "company": "Taiwan Semiconductor Manufacturing"
+        },
+        {
+          "symbol": "ASML",
+          "exchange": "NASDAQ",
+          "country": "Netherlands/US listing",
+          "company": "ASML"
+        },
+        {
+          "symbol": "MU",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Micron Technology"
+        },
+        {
+          "symbol": "005930.KS",
+          "exchange": "KRX",
+          "country": "South Korea",
+          "company": "Samsung Electronics"
+        },
+        {
+          "symbol": "000660.KS",
+          "exchange": "KRX",
+          "country": "South Korea",
+          "company": "SK hynix"
+        },
+        {
+          "symbol": "8035.T",
+          "exchange": "Tokyo",
+          "country": "Japan",
+          "company": "Tokyo Electron"
+        },
+        {
+          "symbol": "INTC",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Intel"
+        },
+        {
+          "symbol": "MRVL",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Marvell Technology"
+        },
+        {
+          "symbol": "ON",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "ON Semiconductor"
+        },
+        {
+          "symbol": "MTSI",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "MACOM Technology Solutions"
+        },
+        {
+          "symbol": "WDC",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Western Digital"
+        },
+        {
+          "symbol": "STX",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Seagate Technology"
+        },
+        {
+          "symbol": "SMCI",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Super Micro Computer"
+        },
+        {
+          "symbol": "MBLY",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Mobileye Global"
+        },
+        {
+          "symbol": "FANUY",
+          "exchange": "OTC",
+          "country": "Japan/US ADR",
+          "company": "FANUC"
+        }
       ]
     },
     {
       "id": "ai_cloud_platforms",
       "label": "AI cloud and platforms",
       "tickers": [
-        {"symbol": "MSFT", "exchange": "NASDAQ", "country": "US", "company": "Microsoft"},
-        {"symbol": "GOOGL", "exchange": "NASDAQ", "country": "US", "company": "Alphabet"},
-        {"symbol": "AMZN", "exchange": "NASDAQ", "country": "US", "company": "Amazon"},
-        {"symbol": "META", "exchange": "NASDAQ", "country": "US", "company": "Meta Platforms"},
-        {"symbol": "ORCL", "exchange": "NYSE", "country": "US", "company": "Oracle"},
-        {"symbol": "BABA", "exchange": "NYSE", "country": "China/US ADR", "company": "Alibaba Group"},
-        {"symbol": "BIDU", "exchange": "NASDAQ", "country": "China/US ADR", "company": "Baidu"},
-        {"symbol": "0700.HK", "exchange": "Hong Kong", "country": "Hong Kong", "company": "Tencent"}
+        {
+          "symbol": "MSFT",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Microsoft"
+        },
+        {
+          "symbol": "GOOGL",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Alphabet"
+        },
+        {
+          "symbol": "AMZN",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Amazon"
+        },
+        {
+          "symbol": "META",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Meta Platforms"
+        },
+        {
+          "symbol": "ORCL",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Oracle"
+        },
+        {
+          "symbol": "BABA",
+          "exchange": "NYSE",
+          "country": "China/US ADR",
+          "company": "Alibaba Group"
+        },
+        {
+          "symbol": "BIDU",
+          "exchange": "NASDAQ",
+          "country": "China/US ADR",
+          "company": "Baidu"
+        },
+        {
+          "symbol": "0700.HK",
+          "exchange": "Hong Kong",
+          "country": "Hong Kong",
+          "company": "Tencent"
+        },
+        {
+          "symbol": "DDOG",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Datadog"
+        },
+        {
+          "symbol": "ZS",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Zscaler"
+        },
+        {
+          "symbol": "CSCO",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Cisco Systems"
+        },
+        {
+          "symbol": "IBM",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "IBM"
+        },
+        {
+          "symbol": "SAP",
+          "exchange": "NYSE",
+          "country": "Germany/US ADR",
+          "company": "SAP"
+        },
+        {
+          "symbol": "ARM",
+          "exchange": "NASDAQ",
+          "country": "UK/US listing",
+          "company": "Arm Holdings"
+        }
       ]
     },
     {
       "id": "ai_software",
       "label": "AI software and analytics",
       "tickers": [
-        {"symbol": "PLTR", "exchange": "NASDAQ", "country": "US", "company": "Palantir Technologies"},
-        {"symbol": "AI", "exchange": "NYSE", "country": "US", "company": "C3.ai"},
-        {"symbol": "SOUN", "exchange": "NASDAQ", "country": "US", "company": "SoundHound AI"},
-        {"symbol": "SNOW", "exchange": "NYSE", "country": "US", "company": "Snowflake"},
-        {"symbol": "NOW", "exchange": "NYSE", "country": "US", "company": "ServiceNow"},
-        {"symbol": "CRWD", "exchange": "NASDAQ", "country": "US", "company": "CrowdStrike"}
+        {
+          "symbol": "PLTR",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Palantir Technologies"
+        },
+        {
+          "symbol": "AI",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "C3.ai"
+        },
+        {
+          "symbol": "SOUN",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "SoundHound AI"
+        },
+        {
+          "symbol": "SNOW",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Snowflake"
+        },
+        {
+          "symbol": "NOW",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "ServiceNow"
+        },
+        {
+          "symbol": "CRWD",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "CrowdStrike"
+        },
+        {
+          "symbol": "PATH",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "UiPath"
+        },
+        {
+          "symbol": "MDB",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "MongoDB"
+        },
+        {
+          "symbol": "ESTC",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Elastic"
+        },
+        {
+          "symbol": "S",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "SentinelOne"
+        },
+        {
+          "symbol": "BIGC",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "BigCommerce"
+        },
+        {
+          "symbol": "SHOP",
+          "exchange": "NASDAQ",
+          "country": "Canada/US listing",
+          "company": "Shopify"
+        },
+        {
+          "symbol": "ADBE",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Adobe"
+        },
+        {
+          "symbol": "CRM",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Salesforce"
+        },
+        {
+          "symbol": "TEAM",
+          "exchange": "NASDAQ",
+          "country": "Australia/US listing",
+          "company": "Atlassian"
+        },
+        {
+          "symbol": "INTU",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Intuit"
+        },
+        {
+          "symbol": "PANW",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Palo Alto Networks"
+        },
+        {
+          "symbol": "BKNG",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Booking Holdings"
+        },
+        {
+          "symbol": "NFLX",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Netflix"
+        },
+        {
+          "symbol": "UBER",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Uber Technologies"
+        },
+        {
+          "symbol": "LYFT",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Lyft"
+        },
+        {
+          "symbol": "DASH",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "DoorDash"
+        },
+        {
+          "symbol": "LYV",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Live Nation Entertainment"
+        },
+        {
+          "symbol": "SPOT",
+          "exchange": "NYSE",
+          "country": "Luxembourg/US listing",
+          "company": "Spotify Technology"
+        }
       ]
     },
     {
       "id": "ai_infrastructure",
       "label": "AI data-center, networking and power infrastructure",
       "tickers": [
-        {"symbol": "VRT", "exchange": "NYSE", "country": "US", "company": "Vertiv"},
-        {"symbol": "ANET", "exchange": "NYSE", "country": "US", "company": "Arista Networks"},
-        {"symbol": "DELL", "exchange": "NYSE", "country": "US", "company": "Dell Technologies"},
-        {"symbol": "GEV", "exchange": "NYSE", "country": "US", "company": "GE Vernova"}
+        {
+          "symbol": "VRT",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Vertiv"
+        },
+        {
+          "symbol": "ANET",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Arista Networks"
+        },
+        {
+          "symbol": "DELL",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Dell Technologies"
+        },
+        {
+          "symbol": "GEV",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "GE Vernova"
+        },
+        {
+          "symbol": "ETN",
+          "exchange": "NYSE",
+          "country": "Ireland/US listing",
+          "company": "Eaton"
+        },
+        {
+          "symbol": "PWR",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Quanta Services"
+        },
+        {
+          "symbol": "EQIX",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Equinix"
+        },
+        {
+          "symbol": "DLR",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Digital Realty Trust"
+        }
       ]
     },
     {
       "id": "robotics_physical_ai",
       "label": "Robotics and physical AI",
       "tickers": [
-        {"symbol": "TSLA", "exchange": "NASDAQ", "country": "US", "company": "Tesla"},
-        {"symbol": "SYM", "exchange": "NASDAQ", "country": "US", "company": "Symbotic"},
-        {"symbol": "6954.T", "exchange": "Tokyo", "country": "Japan", "company": "Fanuc"},
-        {"symbol": "6861.T", "exchange": "Tokyo", "country": "Japan", "company": "Keyence"}
+        {
+          "symbol": "TSLA",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Tesla"
+        },
+        {
+          "symbol": "SYM",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Symbotic"
+        },
+        {
+          "symbol": "6954.T",
+          "exchange": "Tokyo",
+          "country": "Japan",
+          "company": "Fanuc"
+        },
+        {
+          "symbol": "6861.T",
+          "exchange": "Tokyo",
+          "country": "Japan",
+          "company": "Keyence"
+        },
+        {
+          "symbol": "IRBT",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "iRobot"
+        },
+        {
+          "symbol": "TER",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Teradyne"
+        },
+        {
+          "symbol": "ISRG",
+          "exchange": "NASDAQ",
+          "country": "US",
+          "company": "Intuitive Surgical"
+        },
+        {
+          "symbol": "ABB",
+          "exchange": "NYSE",
+          "country": "Switzerland/US listing",
+          "company": "ABB"
+        },
+        {
+          "symbol": "HMC",
+          "exchange": "NYSE",
+          "country": "Japan/US ADR",
+          "company": "Honda Motor"
+        },
+        {
+          "symbol": "GM",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "General Motors"
+        },
+        {
+          "symbol": "F",
+          "exchange": "NYSE",
+          "country": "US",
+          "company": "Ford Motor"
+        },
+        {
+          "symbol": "6501.T",
+          "exchange": "Tokyo",
+          "country": "Japan",
+          "company": "Hitachi"
+        },
+        {
+          "symbol": "9984.T",
+          "exchange": "Tokyo",
+          "country": "Japan",
+          "company": "SoftBank Group"
+        },
+        {
+          "symbol": "2330.TW",
+          "exchange": "Taiwan Stock Exchange",
+          "country": "Taiwan",
+          "company": "Taiwan Semiconductor Manufacturing"
+        }
+      ]
+    },
+    {
+      "id": "ai_etfs",
+      "label": "AI and semiconductor ETFs (not individual companies)",
+      "tickers": [
+        {
+          "symbol": "BOTZ",
+          "exchange": "NASDAQ",
+          "country": "US-listed ETF",
+          "company": "Global X Robotics & Artificial Intelligence ETF"
+        },
+        {
+          "symbol": "IRBO",
+          "exchange": "NYSE Arca",
+          "country": "US-listed ETF",
+          "company": "iShares Robotics and Artificial Intelligence ETF"
+        },
+        {
+          "symbol": "AIQ",
+          "exchange": "NASDAQ",
+          "country": "US-listed ETF",
+          "company": "Global X Artificial Intelligence & Technology ETF"
+        },
+        {
+          "symbol": "SOXL",
+          "exchange": "NYSE Arca",
+          "country": "US-listed leveraged ETF",
+          "company": "Direxion Daily Semiconductor Bull 3X Shares"
+        },
+        {
+          "symbol": "SMH",
+          "exchange": "NASDAQ",
+          "country": "US-listed ETF",
+          "company": "VanEck Semiconductor ETF"
+        },
+        {
+          "symbol": "QQQ",
+          "exchange": "NASDAQ",
+          "country": "US-listed ETF",
+          "company": "Invesco QQQ Trust"
+        }
       ]
     }
   ],
   "next_steps": [
-    "Verify each symbol and exchange mapping with the chosen provider",
-    "Add a quote adapter and timestamp/delay labels",
-    "Implement searchable watchlist, category filters, and local persistence",
-    "Test missing quotes, rate limits, stale data, and market holidays",
-    "Only then add ranking and alerts"
+    "Validate each symbol, listing, and AI-exposure classification against issuer and exchange records",
+    "Keep ETFs in a separate category from individual companies",
+    "Connect a free quote adapter and display source, timestamp, market session, and any delay",
+    "Test search, category filter, favorites persistence, sorting, and CSV export in a browser",
+    "Add ranking and alerts only after historical/quote data quality is validated",
+    "Paper-test any strategy with position limits and explicit simulated-order labeling"
   ]
 }
