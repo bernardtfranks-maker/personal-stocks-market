@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "project": "Global AI Stocks Watchlist",
+  "scope": "AI-related publicly traded companies only",
+  "budget_usd": 0,
+  "data_policy": {
+    "default": "free sources first",
+    "realtime_claims": false,
+    "must_display_timestamp": true,
+    "must_disclose_delay": true,
+    "missing_data_behavior": "show unavailable; never invent or silently reuse stale prices",
+    "api_keys": "keep provider keys out of client-side code and public repositories"
+  },
+  "status": "starter universe; verify symbols and exchange coverage before live quote integration",
+  "categories": [
+    {
+      "id": "ai_semiconductors",
+      "label": "AI semiconductors and equipment",
+      "tickers": [
+        {"symbol": "NVDA", "exchange": "NASDAQ", "country": "US", "company": "NVIDIA"},
+        {"symbol": "AMD", "exchange": "NASDAQ", "country": "US", "company": "Advanced Micro Devices"},
+        {"symbol": "AVGO", "exchange": "NASDAQ", "country": "US", "company": "Broadcom"},
+        {"symbol": "TSM", "exchange": "NYSE", "country": "Taiwan/US ADR", "company": "Taiwan Semiconductor Manufacturing"},
+        {"symbol": "ASML", "exchange": "NASDAQ", "country": "Netherlands/US listing", "company": "ASML"},
+        {"symbol": "MU", "exchange": "NASDAQ", "country": "US", "company": "Micron Technology"},
+        {"symbol": "005930.KS", "exchange": "KRX", "country": "South Korea", "company": "Samsung Electronics"},
+        {"symbol": "000660.KS", "exchange": "KRX", "country": "South Korea", "company": "SK hynix"},
+        {"symbol": "8035.T", "exchange": "Tokyo", "country": "Japan", "company": "Tokyo Electron"}
+      ]
+    },
+    {
+      "id": "ai_cloud_platforms",
+      "label": "AI cloud and platforms",
+      "tickers": [
+        {"symbol": "MSFT", "exchange": "NASDAQ", "country": "US", "company": "Microsoft"},
+        {"symbol": "GOOGL", "exchange": "NASDAQ", "country": "US", "company": "Alphabet"},
+        {"symbol": "AMZN", "exchange": "NASDAQ", "country": "US", "company": "Amazon"},
+        {"symbol": "META", "exchange": "NASDAQ", "country": "US", "company": "Meta Platforms"},
+        {"symbol": "ORCL", "exchange": "NYSE", "country": "US", "company": "Oracle"},
+        {"symbol": "BABA", "exchange": "NYSE", "country": "China/US ADR", "company": "Alibaba Group"},
+        {"symbol": "BIDU", "exchange": "NASDAQ", "country": "China/US ADR", "company": "Baidu"},
+        {"symbol": "0700.HK", "exchange": "Hong Kong", "country": "Hong Kong", "company": "Tencent"}
+      ]
+    },
+    {
+      "id": "ai_software",
+      "label": "AI software and analytics",
+      "tickers": [
+        {"symbol": "PLTR", "exchange": "NASDAQ", "country": "US", "company": "Palantir Technologies"},
+        {"symbol": "AI", "exchange": "NYSE", "country": "US", "company": "C3.ai"},
+        {"symbol": "SOUN", "exchange": "NASDAQ", "country": "US", "company": "SoundHound AI"},
+        {"symbol": "SNOW", "exchange": "NYSE", "country": "US", "company": "Snowflake"},
+        {"symbol": "NOW", "exchange": "NYSE", "country": "US", "company": "ServiceNow"},
+        {"symbol": "CRWD", "exchange": "NASDAQ", "country": "US", "company": "CrowdStrike"}
+      ]
+    },
+    {
+      "id": "ai_infrastructure",
+      "label": "AI data-center, networking and power infrastructure",
+      "tickers": [
+        {"symbol": "VRT", "exchange": "NYSE", "country": "US", "company": "Vertiv"},
+        {"symbol": "ANET", "exchange": "NYSE", "country": "US", "company": "Arista Networks"},
+        {"symbol": "DELL", "exchange": "NYSE", "country": "US", "company": "Dell Technologies"},
+        {"symbol": "GEV", "exchange": "NYSE", "country": "US", "company": "GE Vernova"}
+      ]
+    },
+    {
+      "id": "robotics_physical_ai",
+      "label": "Robotics and physical AI",
+      "tickers": [
+        {"symbol": "TSLA", "exchange": "NASDAQ", "country": "US", "company": "Tesla"},
+        {"symbol": "SYM", "exchange": "NASDAQ", "country": "US", "company": "Symbotic"},
+        {"symbol": "6954.T", "exchange": "Tokyo", "country": "Japan", "company": "Fanuc"},
+        {"symbol": "6861.T", "exchange": "Tokyo", "country": "Japan", "company": "Keyence"}
+      ]
+    }
+  ],
+  "next_steps": [
+    "Verify each symbol and exchange mapping with the chosen provider",
+    "Add a quote adapter and timestamp/delay labels",
+    "Implement searchable watchlist, category filters, and local persistence",
+    "Test missing quotes, rate limits, stale data, and market holidays",
+    "Only then add ranking and alerts"
+  ]
+}
