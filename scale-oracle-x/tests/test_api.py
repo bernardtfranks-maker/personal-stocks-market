@@ -40,7 +40,7 @@ def test_paper_buy_sell_and_guardrails(tmp_path, monkeypatch):
         assert client.get("/api/paper/account").json()["positions"] == []
 
         too_risky = client.post("/api/paper/orders", json={
-            "symbol":"NVDA","side":"buy","quantity":1,
+            "symbol":"NVDA","side":"buy","quantity":1.1,
             "reference_price":100,"stop_loss":90,"take_profit":120
         })
         assert too_risky.status_code == 400
