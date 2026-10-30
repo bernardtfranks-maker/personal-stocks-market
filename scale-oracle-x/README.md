@@ -18,7 +18,7 @@ cd path\to\personal-stocks-market\scale-oracle-x
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 py -m pip install -r backend\requirements.txt
-py -m uvicorn backend.api.main:app --reload
+py -m pytest tests\npy -m uvicorn backend.api.main:app --reload
 ```
 
 Then open http://127.0.0.1:8000/health and http://127.0.0.1:8000/docs.
